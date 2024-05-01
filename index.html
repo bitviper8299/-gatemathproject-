@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <!-- The doctype declaration above tells the web browser about the document type and version of HTML. -->
 <html>
   <head>
@@ -18,6 +18,10 @@
         background-color: rgba(136, 247, 151, 0.385);
         font-family: "Jersey 10", sans-serif;
       }
+
+      p {
+        text-decoration: underline;
+      }
     </style>
     <link
       rel="stylesheet"
@@ -26,9 +30,9 @@
   </head>
   <body>
     <!-- The body section contains the content of the web page. -->
-    <h1>joe's midi effects : superb gating tool and random math selector</h1>
+    <h1>JOE K'S MIDI FX:</h1>
     <!-- An h1 header that provides a title or a brief description of the page's purpose. -->
-
+    <h1>SUPERBULOUS GATING TOOL WITH RANDOM MATH SELECTOR</h1>
     <div>
       <!-- A division or a section in an HTML document, used here to group the input device selector. -->
       <label for="dropdown-ins">Select a MIDI Input:</label>
@@ -41,6 +45,7 @@
 
     <div>
       <!-- Another division for grouping the output device selector. -->
+
       <label for="dropdown-outs">Select a MIDI Output:</label>
       <!-- Similar to the input label, this defines a label for the MIDI output selector. -->
       <select id="dropdown-outs">
@@ -49,18 +54,30 @@
       </select>
     </div>
     <div>
+      <p>
+        tempo slider dictates how fast the gate is (how fast the clock runs)
+      </p>
       <label for="tempo">tempo:</label>
       <input type="range" min="1" max="1000" id="tempo" />
     </div>
     <div>
+      <p>
+        note length slide dictates how active the gate is. slide up for max
+        length
+      </p>
       <label for="note-length">note-length:</label>
       <input type="range" min="1" max="100" id="note-length" />
     </div>
     <div>
+      <p>check the box to activate the math coolness selector</p>
       <label for="math coolness">math coolness:</label>
       <input type="checkbox" id="math coolness" />
     </div>
     <div>
+      <p>
+        minimum means the less probability the notes will play, while max level
+        grants you with more of the notes being played
+      </p>
       <label for="prob">probability slider:</label>
       <input
         type="range"

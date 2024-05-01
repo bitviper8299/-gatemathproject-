@@ -6,6 +6,7 @@ let myOutput = WebMidi.outputs[0];
 let noteRepeat;
 let beatLength = 125; //ms
 let noteLength = 1.0; //100%
+let randoThing = false;
 // Get the dropdown elements from the HTML document by their IDs.
 // These dropdowns will be used to display the MIDI input and output devices available.
 let dropIns = document.getElementById("dropdown-ins");
@@ -65,7 +66,7 @@ dropIns.addEventListener("change", function () {
 });
 const midiLoop = function () {
   myNotes.forEach(function (someNote) {
-    if (document.getElementById("math coolness").checked) {
+    if (randoThing) {
       if (Math.random() > document.getElementById("prob").value) {
         myOutput.channels[2].playNote(someNote, {
           duration: beatLength * noteLength,
@@ -87,10 +88,18 @@ dropOuts.addEventListener("change", function () {
   myOutput = WebMidi.outputs[dropOuts.value];
 });
 document.getElementById("tempo").addEventListener("change", function () {
-  beatLength = 1000 - parseInt(this.value);
+  let bpm = parseInt(this.value); //store sider value in "bpm"
+  beatLength = 60 / bpm; //calculate the length of a beat in seconds
+  beatLength *= 1000; //convert beat length to milliseconds
   clearInterval(noteRepeat);
   noteRepeat = setInterval(midiLoop, beatLength);
 });
 document.getElementById("note-length").addEventListener("input", function () {
   noteLength = this.value / 100;
 });
+
+document
+  .getElementById("math coolness")
+  .addEventListener("change", function () {
+    randoThing = this.checked;
+  });
